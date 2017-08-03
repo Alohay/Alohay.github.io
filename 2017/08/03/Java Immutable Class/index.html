@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://frailness.cn">
-  <title>Blog | Aloha</title>
+  <title>Java Immutable Class | Blog | Aloha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog | Aloha">
-<meta property="og:url" content="http://frailness.cn/index.html">
+  <meta name="description" content="0x00 前言　　简单了解什么是不可变类，做个笔记。附上学习链接 ： The ins and outs of immutability">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Immutable Class">
+<meta property="og:url" content="http://frailness.cn/2017/08/03/Java Immutable Class/index.html">
 <meta property="og:site_name" content="Blog | Aloha">
+<meta property="og:description" content="0x00 前言　　简单了解什么是不可变类，做个笔记。附上学习链接 ： The ins and outs of immutability">
+<meta property="og:updated_time" content="2017-08-03T15:03:07.160Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog | Aloha">
+<meta name="twitter:title" content="Java Immutable Class">
+<meta name="twitter:description" content="0x00 前言　　简单了解什么是不可变类，做个笔记。附上学习链接 ： The ins and outs of immutability">
   
     <link rel="alternative" href="/atom.xml" title="Blog | Aloha" type="application/atom+xml">
   
@@ -135,16 +139,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Java Immutable Class" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Java Immutable Class" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/03/Java Immutable Class/">Java Immutable Class</a>
+    <h1 class="article-title" itemprop="name">
+      Java Immutable Class
     </h1>
   
 
@@ -157,12 +159,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h5><p>　　简单了解什么是不可变类，做个笔记。附上学习链接 ： <a href="https://www.javacodegeeks.com/2013/01/the-ins-and-outs-of-immutability.html">The ins and outs of immutability</a><br></p>
-        
-          <a class="article-more-a" href="/2017/08/03/Java Immutable Class/#more">more >></a>
-        
+        <h5 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h5><p>　　简单了解什么是不可变类，做个笔记。附上学习链接 ： <a href="https://www.javacodegeeks.com/2013/01/the-ins-and-outs-of-immutability.html" target="_blank" rel="external">The ins and outs of immutability</a><br><a id="more"></a></p>
+<h5 id="0x01-什么是不可变类"><a href="#0x01-什么是不可变类" class="headerlink" title="0x01 什么是不可变类"></a>0x01 什么是不可变类</h5><p>　　不可变类，其对象的所有属性，自定义开始直到销毁，不能被改变。基本类型的包装类，例如   <em>Double, Integer</em> 或者 <em>String , BigDecimal</em>等等，都是不可变类。<br>　　<br>　　不可变类要求满足以下5点要求：</p>
+<ul>
+<li>没有能修改对象状态的 <code>public</code> 方法， 例如<code>setter</code></li>
+<li>不能被继承，声明一个 <code>private</code> 构造函数， 用 <code>final</code> 修饰类</li>
+<li>所有属性声明为 <code>final</code></li>
+<li>所有属性声明为 <code>private</code></li>
+<li>无法访问可变属性，例如<code>List, Map</code> 等等
+　　  <h5 id="0x02-代码例子"><a href="#0x02-代码例子" class="headerlink" title="0x02 代码例子"></a>0x02 代码例子</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> String name;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> price;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> List reviews;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Book</span><span class="params">(BookBuilder builder)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = builder.name;</div><div class="line">		<span class="keyword">this</span>.price = builder.price;</div><div class="line">		<span class="keyword">this</span>.reviews = Lists.newArrayList(builder.reviews); <span class="comment">// Guava</span></div><div class="line">		<span class="comment">/**</span></div><div class="line">			此处 不可为 this.reviews = builder.reviews ①</div><div class="line">			reviews 为 List 类型，若按 ① 则 this.reviews 指向builder.reviews指向的对象，而该对象是可变的，</div><div class="line">			不可变类要求属性不可变，故 ① 写法错误</div><div class="line">		*/</div><div class="line">	&#125;</div><div class="line">	 </div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> price;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> List <span class="title">getReviews</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> Lists.newArrayList(reviews);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> class <span class="title">BookBuilder</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">private</span> String name;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> price;</div><div class="line">        <span class="keyword">private</span> List reviews;</div><div class="line">        <span class="function"><span class="keyword">public</span> BookBuilder <span class="title">isbn</span><span class="params">(String isbn)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.name = name;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> BookBuilder <span class="title">price</span><span class="params">(<span class="keyword">int</span> price)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.price = price;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> BookBuilder <span class="title">reviews</span><span class="params">(List reviews)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.reviews = reviews == <span class="keyword">null</span> ? <span class="keyword">new</span> ArrayList() : reviews;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> Book <span class="title">build</span><span class="params">()</span></span>&#123;</div><div class="line">	        <span class="keyword">return</span> <span class="keyword">new</span> Book(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="0x03-特殊情况"><a href="#0x03-特殊情况" class="headerlink" title="0x03 特殊情况"></a>0x03 特殊情况</h5><p>　　若非要修改不可变类的属性值。<br>　　将 <code>class Book</code> 做一些改动。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="title">Book</span><span class="params">(BookBuilder builder)</span></span>&#123;</div><div class="line">	<span class="keyword">this</span>(builder.name, builder.price, builder.reviews);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="title">Book</span><span class="params">(String name, <span class="keyword">int</span> price, List reviews)</span></span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.price = price;</div><div class="line">	<span class="keyword">this</span>.reviews = Lists.newArrayList(reviews);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> Book <span class="title">withName</span><span class="params">(String name)</span></span>&#123;</div><div class="line">	<span class="comment">// 创建一个新的类对象</span></div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Book(name, <span class="keyword">this</span>.price, <span class="keyword">this</span>.reviews);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　　该做法使得每次获得属性值不相同的类对象时，创建一个新的，对内存开销较大。<br>　　可用设计模式优化。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -182,18 +215,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/03/Java Immutable Class/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://frailness.cn/2017/08/03/Java Immutable Class/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/22/Exploit the macro of office/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Exploit the macro of office</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -201,215 +290,10 @@
 
 
   
-    <article id="post-Exploit the macro of office" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/Exploit the macro of office/">Exploit the macro of office</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        
-        <a href="/2017/03/22/Exploit the macro of office/" class="archive-article-date">
-  	<time datetime="2017-03-22T12:38:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h3><p>　　利用 <strong>Veil-Evasion</strong> 生成payload，利用 <strong>MacroShop</strong> 或 <strong>unicorn</strong> <em>（效果更好）</em> 免杀。<br></p>
-        
-          <a class="article-more-a" href="/2017/03/22/Exploit the macro of office/#more">more >></a>
-        
-      
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kali</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">office</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/22/Exploit the macro of office/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Vulnerable webeditor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/Vulnerable webeditor/">Vulnerable webeditor</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/10/Vulnerable webeditor/" class="archive-article-date">
-  	<time datetime="2017-03-10T03:52:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h3><p>　　之前跟着一个渗透教程走过一遍，但是由于当时环境限制没有搭建靶场实战，现在打算依据一个新的教程重新走一遍。本篇博文是关于利用网页编辑器漏洞进行渗透的练习。<br></p>
-        
-          <a class="article-more-a" href="/2017/03/10/Vulnerable webeditor/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">webeditor</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">summary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/10/Vulnerable webeditor/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Learning Struts2 Nostes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/26/Learning Struts2 Nostes/">LearningStruts2Nostes</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/26/Learning Struts2 Nostes/" class="archive-article-date">
-  	<time datetime="2017-02-26T07:05:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h3><p>　　最近在imooc上学习了Struts2的相关课程，本着<del>实践出真知的精神</del>，我着手练习一个涉及到Struts2，Jquery和Ajax的小作业。<del>其实是学长布置的作业，只是我拖到现在才有能力开始写</del>。正如本文开篇所说的那样，博主对于Struts2的理解还处于一个十分初级的阶段，遇到的问题当然也是各位大佬所不会犯的错，但今日我特撰此文，以示警戒自己。</p>
-        
-          <a class="article-more-a" href="/2017/02/26/Learning Struts2 Nostes/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Struts2</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Ajax</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/26/Learning Struts2 Nostes/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
 
 
           </div>
@@ -431,8 +315,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
